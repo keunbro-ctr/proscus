@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 
 // --- 커스텀 아이콘 (Slate 스타일 적용) ---
-const ShipIcon = ({ className }) => (
+const ShipIcon = ({ className }: { className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -25,7 +25,7 @@ const ShipIcon = ({ className }) => (
   </svg>
 );
 
-const PlaneIcon = ({ className }) => (
+const PlaneIcon = ({ className }: { className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -44,7 +44,7 @@ const PlaneIcon = ({ className }) => (
   </svg>
 );
 
-const FileSearchIcon = ({ className }) => (
+const FileSearchIcon = ({ className }: { className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -64,7 +64,7 @@ const FileSearchIcon = ({ className }) => (
   </svg>
 );
 
-const ScaleIcon = ({ className }) => (
+const ScaleIcon = ({ className }: { className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -83,7 +83,7 @@ const ScaleIcon = ({ className }) => (
   </svg>
 );
 
-const GlobeIcon = ({ className }) => (
+const GlobeIcon = ({ className }: { className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -100,7 +100,7 @@ const GlobeIcon = ({ className }) => (
   </svg>
 );
 
-const ShieldAlertIcon = ({ className }) => (
+const ShieldAlertIcon = ({ className }: { className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -117,7 +117,7 @@ const ShieldAlertIcon = ({ className }) => (
   </svg>
 );
 
-const CheckIcon = ({ className }) => (
+const CheckIcon = ({ className }: { className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -132,7 +132,7 @@ const CheckIcon = ({ className }) => (
   </svg>
 );
 
-const ArrowRightIcon = ({ className }) => (
+const ArrowRightIcon = ({ className }: { className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
