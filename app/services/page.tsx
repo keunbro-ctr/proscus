@@ -150,8 +150,8 @@ const ArrowRightIcon = ({ className }: { className?: string }) => (
 // -----------------------------------------------------------
 
 // 애니메이션 훅
-function useInView(options = {}) {
-  const ref = useRef(null);
+function useInView(options: IntersectionObserverInit = {}) {
+  const ref = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
@@ -159,20 +159,20 @@ function useInView(options = {}) {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsInView(true);
-          observer.unobserve(ref.current);
+          if (ref.current) observer.unobserve(ref.current);
         }
       },
       { threshold: 0.2, ...options }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, []);
+  }, [options]);
 
   return { ref, isInView };
 }
 
 // 스크롤 스파이 훅
-function useScrollSpy(ids, offset = 150) {
+function useScrollSpy(ids: string[], offset: number = 150) {
   const [activeId, setActiveId] = useState('');
 
   useEffect(() => {
@@ -220,100 +220,95 @@ export default function ServicesPage() {
     {
       id: 'export',
       title: '수출통관 및 환급',
-      engTitle: 'Export & Drawback',
+      engTitle: 'Export Clearance & Refund',
       icon: <PlaneIcon className="w-6 h-6" />,
-      desc: '신속한 수출 신고 처리와 더불어 관세 환급을 통한 기업의 제조 원가 절감 솔루션을 제공합니다.',
+      desc: '수출통관부터 관세 환급, 상계 처리까지 전 과정을 한 번에 해결합니다.',
       details: [
-        '수출 신고 필증 발급 및 선적 일정에 맞춘 신속 통관 처리',
-        '간이정액환급 및 개별환급 시뮬레이션을 통한 환급액 극대화 전략 수립',
-        '원상태 수출, 위탁 가공 무역 등 특수 거래 형태에 따른 맞춤형 신고',
-        '재수입 면세 요건 검토 및 사후 관리 지원',
-        '수출 실적 인정 범위 검토 및 무역 금융 연계 지원',
-      ],
-    },
-    {
-      id: 'hscode',
-      title: 'HS CODE 품목분류',
-      engTitle: 'HS Classification',
-      icon: <FileSearchIcon className="w-6 h-6" />,
-      desc: '관세 행정의 핵심인 정확한 품목분류를 통해 세율 오류로 인한 추징 리스크를 사전에 차단합니다.',
-      details: [
-        '신규 취급 품목에 대한 사전 HS CODE 정밀 분석 및 분류',
-        '관세평가분류원 품목분류 사전심사 신청 대행 및 의견서 작성',
-        'WCO(세계관세기구) 등 국제 분쟁 사례 분석을 통한 논리 개발',
-        'FTA 협정별 품목분류 상이점에 따른 최적 세율 도출',
-        '오류 품목분류 수정 신고 및 경정 청구 진행',
-      ],
-    },
-    {
-      id: 'consulting',
-      title: '관세 · 외환 심사 자문',
-      engTitle: 'Customs Valuation & Audit',
-      icon: <ScaleIcon className="w-6 h-6" />,
-      desc: '관세평가(Valuation)와 외환거래법 이슈를 종합적으로 진단하여 기업의 컴플라이언스 리스크를 해소합니다.',
-      details: [
-        'ACVA(특수관계자 과세가격 사전약정) 컨설팅 및 승인 대행',
-        '로열티, 생산지원비 등 가산 요소 누락 방지를 위한 과세가격 검토',
-        '외국환거래법상 자본거래, 상계, 제3자 지급 등 신고 의무 검토',
-        '비가산 요소(이자비용, 구매수수료 등) 입증을 통한 관세 절감',
-        '정기 법인 심사 및 기획 심사 사전 진단 (Mock Audit)',
+        '수출 신고(일반, 간이, 위탁 등)와 관련 세관 인증 (AEO, 수출우수업체)',
+        '수출용 원재료의 관세 환급/사후관리/상계 신고 및 심사 대응',
+        '과세가격 신고 오류, 수출실적/내국신용장 허위 사용 등 조사 대응',
+        '재수출면세, 가공무역, 용도세율 신고 등 특수통관 형태 실무 대행',
+        'FTA 원산지증명서 발급 및 사후 검증 대비 교육, 컨설팅',
       ],
     },
     {
       id: 'fta',
-      title: 'FTA 및 원산지 관리',
-      engTitle: 'FTA & Origin Management',
+      title: 'FTA 원산지 종합 서비스',
+      engTitle: 'FTA Origin Management',
       icon: <GlobeIcon className="w-6 h-6" />,
-      desc: '자유무역협정(FTA)의 혜택을 극대화하고, 원산지 검증 리스크에 대비하는 체계적인 시스템을 구축합니다.',
+      desc: 'FTA 혜택을 극대화하고 원산지 검증 리스크를 최소화합니다.',
       details: [
-        '품목별/협정별 원산지 결정 기준(PSR) 충족 여부 판정',
-        '원산지 증명서(C/O) 발급 대행 및 인증수출자 취득 컨설팅',
-        '협력업체 원산지 확인서 유통망 관리 및 교육 지원',
-        '상대국 세관의 원산지 사후 검증 시 대응 논리 개발 및 소명',
-        'RCEP 등 메가 FTA 활용 실익 분석 및 공급망 재편 자문',
+        'FTA 협정별 원산지 판정(PSR) 및 세이프가드 세율 심사',
+        '품목별 특혜관세율 적용 가능 여부 검토 및 실익 분석',
+        '원산지 증명서류 작성 대행 (C/O, 자율증명, 전자원산지증명서 발급)',
+        '사후 세관 검증 대응(원산지 확인서, 협정별 대응 전략 수립)',
+        '공급망 전반의 원산지 관리 매뉴얼 작성, 내부 교육 및 진단 컨설팅',
       ],
     },
     {
-      id: 'risk',
-      title: '권리구제 및 리스크 대응',
-      engTitle: 'Risk Management',
-      icon: <ShieldAlertIcon className="w-6 h-6" />,
-      desc: '부당한 과세 처분에 대한 불복 절차와 관세 형사 사건 등 위기 상황에서 고객의 권익을 보호합니다.',
+      id: 'inspection',
+      title: '관세조사 & 세무조사 대응',
+      engTitle: 'Tax Audit Support',
+      icon: <FileSearchIcon className="w-6 h-6" />,
+      desc: '관세조사와 세무조사에 대비하고, 조사 시 전문적으로 대응합니다.',
       details: [
-        '과세전적부심사 청구 및 심판청구 대리',
-        '관세법 위반 조사 시 조사 입회 및 의견 진술',
-        '밀수입, 관세포탈, 부정수입 등 관세 형사 사건 자문',
-        '세관의 기업 심사 대응 전략 수립 및 현장 대응 지원',
-        '행정 소송 전 단계에서의 논리 개발 및 파트너 변호사 연계',
+        '세관 정기/수시조사(통관/수출입·외환/관세 재조사) 대응',
+        '과세가격 조정, 품목분류 변경, 과소신고 등 비위 사안 전략 수립',
+        '국세청 특별세무조사, 부가가치세/소득세 연계 조사 대응',
+        '관세범칙조사와 형사입건 위험도 평가 및 변론 자료 준비',
+        '관세청, 국세청 소송(조세심판원, 행정소송) 지원 및 법무법인 연계',
+      ],
+    },
+    {
+      id: 'hsCode',
+      title: '품목분류 및 관세율 최적화',
+      engTitle: 'HS Code Classification',
+      icon: <ScaleIcon className="w-6 h-6" />,
+      desc: '정확한 품목분류와 최적의 관세율 적용으로 비용을 절감합니다.',
+      details: [
+        'HS Code 정확 분류 및 사전심사 신청, 유권해석 확보',
+        '관세율(기본/WTO/FTA/할당) 비교 분석 및 절세 전략 수립',
+        '품목분류 오류 적발 시 경정청구(세금 환급) 대행',
+        '대체물품, 부분품, 조립품, 완제품 등 기술적 분석 지원',
+        '유사 품목 판례 및 해석 사례 분석, 통관 리스크 최소화',
+      ],
+    },
+    {
+      id: 'compliance',
+      title: '관세법 준법지원 & 내부관리',
+      engTitle: 'Customs Compliance',
+      icon: <ShieldAlertIcon className="w-6 h-6" />,
+      desc: '지속적인 관세법 준수 체계를 구축하고 내부 관리를 강화합니다.',
+      details: [
+        'AEO 인증 획득/유지 컨설팅, 준법시스템 구축 및 내부심사 대행',
+        '수출입 프로세스 진단, 관세법령 위반 리스크 점검',
+        '공급망 특수관계자 거래 현황 분석 및 과세가격 사전 대응',
+        '신규 통관업무 담당자 교육, 매뉴얼 작성, 사내 세미나 진행',
+        '관세법·FTA·외환법 등 통합 컴플라이언스 체계 구축 지원',
       ],
     },
   ];
 
-  const activeSectionId = useScrollSpy(services.map((s) => s.id));
+  const activeSectionId = useScrollSpy(
+    services.map((s) => s.id),
+    150
+  );
 
   return (
     <>
       <Head>
-        <link
-          rel="stylesheet"
-          as="style"
-          crossOrigin="anonymous"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css"
-        />
+        <title>서비스 안내 - 프로스관세사</title>
       </Head>
 
-      <main className="bg-white text-slate-900 font-['Pretendard']">
-        {/* --- 1. Header Section (메인 페이지 스타일: 이미지 배경 + 어두운 오버레이) --- */}
-        {/* --- 1. Header Section (고급 그라데이션 배경) --- */}
-        <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-          {/* 1️⃣ 배경 이미지 (질감만 남김) */}
+      <main className="bg-white">
+        {/* --- 1. Hero Section (Slate Style) --- */}
+        <section className="relative min-h-[50vh] md:min-h-[60vh] flex items-center justify-center overflow-hidden">
+          {/* 1️⃣ 베이스 노이즈 텍스처 */}
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            className="absolute inset-0 opacity-[0.015]"
             style={{
-              backgroundImage:
-                "url('https://ai.esmplus.com/secretbro/hero-bg.jpg')",
-              filter: 'grayscale(60%) contrast(105%) brightness(85%)',
-              opacity: 1,
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+              backgroundSize: '200px 200px',
             }}
           />
 
