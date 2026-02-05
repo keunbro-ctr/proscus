@@ -49,7 +49,7 @@ export default function MobileHeader() {
       ]
     },
     { label: '업무영역', href: '/services' },
-    { label: '블로그', href: '/blog' },
+    { label: '블로그', href: 'https://blog.naver.com/dream1403' },
   ];
 
   return (
