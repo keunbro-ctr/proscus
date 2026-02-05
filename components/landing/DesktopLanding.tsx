@@ -1078,7 +1078,7 @@ export default function DesktopLanding() {
                   href="https://open.kakao.com/o/sfMApAbi"
                 >
                   <span
-                    className="absolute inset-0 bg-white/10"
+                    className="absolute inset-0 bg-white/10 pointer-events-none"
                     style={{
                       animation: 'shimmer 3s ease-in-out infinite',
                     }}
