@@ -136,7 +136,7 @@ export default function MobileLanding() {
             }}
           >
             <Link
-              href="/contact"
+              href="https://open.kakao.com/o/sfMApAbi"
               className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-6 py-3.5 text-sm font-medium text-white shadow-lg hover:shadow-xl transition-all overflow-hidden"
             >
               <span
