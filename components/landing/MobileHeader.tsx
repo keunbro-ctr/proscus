@@ -202,7 +202,7 @@ export default function MobileHeader() {
 
           {/* CTA Button */}
           <Link
-            href="/contact"
+            href="https://open.kakao.com/o/sfMApAbi"
             className={`mt-4 flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-slate-900 text-white font-medium hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl ${
               isOpen ? 'animate-slideInRight' : ''
             }`}
