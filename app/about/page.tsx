@@ -137,7 +137,7 @@ export default function AboutPage() {
             전담 관세사가 내용을 검토 후 24시간 이내에 신속히 회신드립니다.
           </p>
           <Link
-            href="/contact"
+            href="https://open.kakao.com/o/sfMApAbi"
             className="inline-flex items-center justify-center rounded-full bg-white px-10 py-5 text-slate-900 text-lg font-bold hover:bg-slate-200 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             상담 신청하기
