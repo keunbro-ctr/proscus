@@ -411,7 +411,7 @@ export default function ServicesPage() {
                     0505-055-2324
                   </p>
                   <Link
-                    href="/contact"
+                    href="https://open.kakao.com/o/sfMApAbi"
                     className="block w-full bg-slate-900 text-white py-4 rounded-xl text-sm font-bold hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                   >
                     문의하기
