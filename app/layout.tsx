@@ -117,7 +117,7 @@ export default function RootLayout({
                       업무영역
                     </Link>
                     <Link
-                      href="/contact"
+                      href="https://blog.naver.com/dream1403"
                       className="hover:text-slate-900 transition-colors"
                     >
                       블로그
