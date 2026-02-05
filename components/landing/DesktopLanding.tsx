@@ -128,7 +128,7 @@ export default function DesktopLanding() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-16">
             <Link
-              href="/contact"
+              href="https://open.kakao.com/o/sfMApAbi"
               className="group inline-flex items-center justify-center gap-2 rounded-lg bg-slate-900 px-6 py-3 text-sm font-medium text-white hover:bg-slate-800 transition-all"
             >
               상담 신청하기
@@ -1075,7 +1075,7 @@ export default function DesktopLanding() {
               <div className="grid gap-3">
                 <Link
                   className="group relative rounded-lg bg-slate-900 px-6 py-4 text-center text-sm font-medium text-white hover:bg-slate-800 transition-all hover:shadow-lg overflow-hidden"
-                  href="/contact"
+                  href="https://open.kakao.com/o/sfMApAbi"
                 >
                   <span
                     className="absolute inset-0 bg-white/10"
