@@ -125,7 +125,7 @@ export default function RootLayout({
                   </nav>
 
                   <Link
-                    href="/contact"
+                    href="https://open.kakao.com/o/sfMApAbi"
                     className="rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-bold text-white hover:bg-slate-800 transition-all hover:shadow-lg transform hover:-translate-y-0.5"
                   >
                     상담 신청
